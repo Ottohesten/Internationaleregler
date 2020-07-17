@@ -1,1 +1,17 @@
-<h1>this is a test</h1>
+{% extends "internationaleregler/base.html" %}
+{% block title %}
+<div class="jumbotron text-center">
+    <h1>Internationale Bordet Fanger Regler</h1>
+</div>
+
+{% endblock title %}
+
+{% block content %}
+
+<div> 
+    <ul class="list-group mt-5 text-center">
+        <li class="list-group-item">Man kan kun kalde bordet fanger på en person, dvs. ikke et "vi"</li>
+        <li class="list-group-item">Hvis man vil sige "aldrig alene" skal det være det første man siger, og det skal siges lige efter man er blevet fanget</li>
+    </ul>
+</div>
+{% endblock content %}
