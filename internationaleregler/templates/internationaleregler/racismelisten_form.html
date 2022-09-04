@@ -1,0 +1,21 @@
+{% extends "internationaleregler/base.html" %}
+{% load tz %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div>
+    <form method= "POST" >
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Racisme point</legend>
+                {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Sumbit</button>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

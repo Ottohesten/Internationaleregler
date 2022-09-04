@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'internationaleregler.apps.InternationalereglerConfig',
+    'crispy_forms',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,3 +125,8 @@ STATIC_URL = '/static/'
 
 
 django_heroku.settings(locals())
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "home"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
