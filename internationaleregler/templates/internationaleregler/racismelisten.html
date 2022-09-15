@@ -1,7 +1,7 @@
 {% extends "internationaleregler/base.html" %}
 {% load tz %}
 {% block title %}
-<div class="jumbotron text-center">
+<div class="text-center">
     <h1>Racismelisten</h1>
 </div>
 {% endblock title %}
@@ -23,12 +23,18 @@
 </div>
 
 {% for rp in rps %}
-<div class="mb-5 bg-secondary">
-    <h3>Title: {{ rp.title }}</h3>
-    <h3>User: {{ rp.user }}</h3>
-    <h3>Points: {{ rp.points }}</h3>
+
+<div class="mb-3">
+  <ul class="list-group">
+    <li class="list-group-item">Beskrivelse: {{ rp.description }}</li>
+    <li class="list-group-item">Person: {{ rp.user }}</li>
+    <li class="list-group-item">Point: {{ rp.points }}</li>
+    {% timezone "Europe/Paris" %}
+      <li class="list-group-item">Dato: {{ rp.date_posted |date:"H:i , F d, Y"}}</li>
+    {% endtimezone %}
+  </ul>
 </div>
-<hr>
+
 {% endfor %}
 
 <div class="text-right">

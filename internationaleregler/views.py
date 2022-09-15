@@ -27,7 +27,7 @@ def drengene(request):
 
 class RacismPointCreateView(LoginRequiredMixin, CreateView):
     model = RacismPoint
-    fields = ["title", "user", "description", "points"]
+    fields = ["description", "user", "points"]
     template_name = "internationaleregler/racismelisten_form.html"
     success_url = reverse_lazy("racismelisten")
 
@@ -41,7 +41,7 @@ class RacismPointListView(LoginRequiredMixin, ListView):
     template_name = "internationaleregler/racismelisten.html"
     context_object_name = "rps"
     ordering = ["-date_posted"]
-    paginate_by = 20
+    paginate_by = 5
 
 
     def get_context_data(self, **kwargs):
