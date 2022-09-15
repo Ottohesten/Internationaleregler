@@ -12,20 +12,7 @@ class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     points = models.IntegerField(default=0)
     
-    
-    # @property
-    # def points(self):
-    #     rps = RacismPoint.objects.filter(user=self)
-    #     sum = 0
-    #     for rp in rps:
-    #         sum += rp.points
-    #     # return sum
-    #     return 50
-            
-        
-        
-    
-    
+
     
     def __str__(self):
         return f"{self.user}"

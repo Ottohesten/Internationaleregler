@@ -21,12 +21,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1v3auye1f&@fb-ejr%%yx*)le%pov1qf5m*47t9%9vab51yc3)'
+# SECRET_KEY = '1v3auye1f&@fb-ejr%%yx*)le%pov1qf5m*47t9%9vab51yc3)'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = (os.getenv("DEBUG_VALUE") == "True")
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['http://internationaleregler.dk',"localhost"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -103,7 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -121,12 +124,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 
 django_heroku.settings(locals())
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "home"
 
+
+
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# DEBUG_PROPAGATE_EXCEPTIONS = True
